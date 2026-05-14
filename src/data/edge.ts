@@ -142,13 +142,13 @@ function scoreCVDDivergence(candles: Candle[], cvd: CVDPoint[]): number {
 function scoreLiqProximity(currentPrice: number, clusters: LiqCluster[]): number {
   if (!clusters.length || currentPrice === 0) return 0
   const nearby = clusters.filter(c => {
-    const dist = Math.abs(c.price - currentPrice) / currentPrice * 100
+    const dist = Math.abs(c.midPrice - currentPrice) / currentPrice * 100
     return dist <= 0.5
   })
   if (nearby.length === 0) {
     // Check within 1% for partial score
     const close = clusters.filter(c => {
-      const dist = Math.abs(c.price - currentPrice) / currentPrice * 100
+      const dist = Math.abs(c.midPrice - currentPrice) / currentPrice * 100
       return dist <= 1.0
     })
     return close.length > 0 ? 10 : 0

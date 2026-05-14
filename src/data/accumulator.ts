@@ -226,7 +226,7 @@ export async function logRejection(rejection: SetupRejection): Promise<void> {
   const id = `rej-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`
   await idbPut('setup_records', {
     id,
-    direction: 'neutral',
+    direction: 'long' as 'long' | 'short',
     timeframe: rejection.timeframe,
     mode:      rejection.mode,
     edge:      rejection.edge,
