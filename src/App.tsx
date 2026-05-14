@@ -79,8 +79,10 @@ export default function App() {
   const [mobilePanel, setMobilePanel] = useState<'chart'|'market'|'signals'>('chart')
 
   const wsRef      = useRef<(()=>void)|null>(null)
+  const symbolRef    = useRef<string>('BTCUSDT')
   const timerRef   = useRef<ReturnType<typeof setInterval>|null>(null)
   const prevScore  = useRef(0)
+  const liqStopRef   = useRef<(()=>void)|null>(null)
   const weights    = useRef<typeof DEFAULT_WEIGHTS>(DEFAULT_WEIGHTS)
 
   const loadCandles = useCallback(async (tf: Timeframe, sym?: string) => {
@@ -132,13 +134,16 @@ export default function App() {
   const handleTF = useCallback((tf: Timeframe) => {
     setTimeframe(tf)
     setActiveSetup(null); setShowSetup(false)
+    prevScore.current = 0
     loadCandles(tf, symbol)
     startWS(tf, symbol)
   }, [loadCandles, startWS, symbol])
 
   const handleSymbol = useCallback((sym: string) => {
+    symbolRef.current = sym
     setSymbol(sym)
     setActiveSetup(null); setShowSetup(false)
+    prevScore.current = 0
     setTicker(null); setFunding(null); setOI(0); setLongShort(null)
     clearClusters(); setLiqClusters([])
     loadCandles(timeframe, sym)
@@ -148,7 +153,7 @@ export default function App() {
 
   useEffect(() => {
     loadCandles(timeframe); loadMarket(); startWS(timeframe)
-    timerRef.current = setInterval(() => loadMarket(symbol), MARKET_MS)
+    timerRef.current = setInterval(() => loadMarket(symbolRef.current), MARKET_MS)
     // Load adjusted weights async
     getAdjustedWeights().then(w => { weights.current = w })
     // Start real liquidation stream

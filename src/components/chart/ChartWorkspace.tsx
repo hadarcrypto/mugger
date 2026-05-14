@@ -10,6 +10,7 @@ import './ChartWorkspace.css'
 
 interface ChartWorkspaceProps {
   candles: Candle[]
+  symbol?: string
   timeframe: Timeframe
   livePrice: number | null
   isLoading: boolean
@@ -28,7 +29,7 @@ const fmt = {
 }
 
 export const ChartWorkspace: React.FC<ChartWorkspaceProps> = ({
-  candles, timeframe, livePrice, isLoading, magnets, muggerScore, activeSetup, liqClusters, forwardZones, onTimeframeChange
+  candles, timeframe, livePrice, isLoading, magnets, muggerScore, symbol, activeSetup, liqClusters, forwardZones, onTimeframeChange
 }) => {
   const last = candles[candles.length - 1]
   const displayPrice = livePrice ?? last?.close ?? 0
@@ -73,6 +74,7 @@ export const ChartWorkspace: React.FC<ChartWorkspaceProps> = ({
           isLoading={isLoading}
           magnets={magnets}
           timeframe={timeframe}
+          symbol={symbol}
           activeSetup={activeSetup}
           liqClusters={liqClusters ?? []}
           forwardZones={forwardZones ?? []}
@@ -85,7 +87,7 @@ export const ChartWorkspace: React.FC<ChartWorkspaceProps> = ({
 
       <div className="chart-workspace__bottom">
         <span className="chart-workspace__bottom-label">
-          MUGGER v0.003 · RSI · CVD · Liquidity Magnets · Forward Liquidations · {candles.length} candles
+          MUGGER v0.020 · RSI · CVD · Liquidity Magnets · Forward Liquidations · {candles.length} candles
         </span>
         <span className="chart-workspace__bottom-count">
           {magnets.filter(m => !m.finished).length} magnets

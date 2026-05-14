@@ -15,6 +15,7 @@ import './CandleChart.css'
 
 interface CandleChartProps {
   candles: Candle[]
+  symbol?: string
   livePrice: number | null
   isLoading: boolean
   magnets: LiquidityMagnet[]
@@ -42,7 +43,7 @@ const TF_CONFIG: Record<Timeframe, { zoneWidth: number; label: string }> = {
 }
 
 export const CandleChart: React.FC<CandleChartProps> = ({
-  candles, livePrice, isLoading, magnets, timeframe, activeSetup, liqClusters, forwardZones
+  candles, livePrice, isLoading, magnets, timeframe, symbol, activeSetup, liqClusters, forwardZones
 }) => {
   const wrapperRef  = useRef<HTMLDivElement>(null)
   const candleRef   = useRef<HTMLDivElement>(null)
@@ -179,7 +180,7 @@ export const CandleChart: React.FC<CandleChartProps> = ({
     }
   },[candles])
 
-  useEffect(()=>{initDone.current=false},[timeframe])
+  useEffect(()=>{initDone.current=false},[timeframe, symbol])
 
   // ── Live price ────────────────────────────────────────────────────────────
   useEffect(()=>{

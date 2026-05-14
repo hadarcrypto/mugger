@@ -139,7 +139,8 @@ async function idbDelete(storeName: string, key: string): Promise<void> {
 // ─── Stats rebuilder ──────────────────────────────────────────────────────────
 
 function rebuildStats(records: SetupRecord[]): AccumulatorStats {
-  const closed  = records.filter(r => r.outcome !== 'pending')
+  const realRecords = records.filter(r => !r.rejectionReason)
+  const closed  = realRecords.filter(r => r.outcome !== 'pending')
   const wins    = closed.filter(r => r.outcome.startsWith('win'))
   const losses  = closed.filter(r => r.outcome === 'loss')
 
@@ -179,10 +180,10 @@ function rebuildStats(records: SetupRecord[]): AccumulatorStats {
   }
 
   return {
-    totalSetups: records.length,
+    totalSetups: realRecords.length,
     wins: wins.length,
     losses: losses.length,
-    pending: records.filter(r => r.outcome === 'pending').length,
+    pending: realRecords.filter(r => r.outcome === 'pending').length,
     winRate: Math.round(globalWR * 100),
     avgRR: Math.round(avgRR * 100) / 100,
     byTimeframe: byTF,

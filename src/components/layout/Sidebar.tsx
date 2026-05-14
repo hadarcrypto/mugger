@@ -135,8 +135,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* System */}
       <div className="sidebar__section sidebar__section--bottom">
         <div className="sidebar__section-title">System</div>
-        <StatRow label="Version"    value="v0.004" />
-        <StatRow label="Next →"      value="v0.005" dimValue />
+        <StatRow label="Version"    value="v0.020" />
+        <StatRow label="Next →"      value="v0.021" dimValue />
         <StatRow label=""            value="Multi-asset ETH+alts" dimValue />
         <StatRow label=""            value="Real Coinglass heatmap" dimValue />
       </div>
