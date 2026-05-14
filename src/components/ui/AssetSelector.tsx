@@ -32,7 +32,7 @@ export const AssetSelector: React.FC<AssetSelectorProps> = ({ currentSymbol, onS
   const [open, setOpen] = useState(false)
   const [assets, setAssets] = useState<ScannedAsset[]>([])
   const [loading, setLoading] = useState(false)
-  const [tab, setTab] = useState<'DT' | 'ST'>('DT')
+  const [tab, setTab] = useState<'DT' | 'ST' | 'ALL'>('DT')
   const [lastScan, setLastScan] = useState<Date | null>(null)
   const dropRef = useRef<HTMLDivElement>(null)
 
@@ -62,7 +62,7 @@ export const AssetSelector: React.FC<AssetSelectorProps> = ({ currentSymbol, onS
 
   const dtList = getDTCandidates(assets)
   const stList = getSTCandidates(assets)
-  const list = tab === 'DT' ? dtList : stList
+  const list = tab === 'ALL' ? assets : tab === 'DT' ? dtList : stList
 
   return (
     <div className="asset-selector" ref={dropRef}>
@@ -92,7 +92,19 @@ export const AssetSelector: React.FC<AssetSelectorProps> = ({ currentSymbol, onS
             >
               Swing
             </button>
+            <button
+              className={`asset-selector__tab ${tab === 'ALL' ? 'asset-selector__tab--active' : ''}`}
+              onClick={() => setTab('ALL')}
+            >
+              All
+            </button>
             {lastScan && (
+            <button
+              className={`asset-selector__tab ${tab === 'ALL' ? 'asset-selector__tab--active' : ''}`}
+              onClick={() => setTab('ALL')}
+            >
+              All
+            </button>
               <span className="asset-selector__scan-time">
                 {lastScan.toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit', hour12: false })}
               </span>
