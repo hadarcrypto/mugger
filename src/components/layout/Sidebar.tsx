@@ -33,7 +33,7 @@ const StatRow: React.FC<{ label: string; value: React.ReactNode; dimValue?: bool
 )
 
 export const Sidebar: React.FC<SidebarProps> = ({
-  ticker, funding, longShort, fearGreed, openInterest
+  ticker, funding, longShort, fearGreed, openInterest, symbol = 'BTCUSDT'
 }) => {
   const fundingRate = funding?.fundingRate ?? 0
   const fundingColor = fundingRate < -0.0001
@@ -50,7 +50,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* Market */}
       <div className="sidebar__section">
         <div className="sidebar__section-title">Market</div>
-        <StatRow label="Asset"   value=`${symbol.replace('USDT', '')} / USDT` />
+        <StatRow label="Asset"   value={`${symbol.replace('USDT', '')} / USDT`} />
         <StatRow label="Mode"    value="Observe" />
         <StatRow label="Source"  value="Binance" />
         <StatRow
