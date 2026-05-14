@@ -8,6 +8,7 @@ interface SidebarProps {
   longShort: LongShortData | null
   fearGreed: FearGreedData | null
   openInterest: number
+  symbol?: string
 }
 
 const fmt = {
@@ -49,7 +50,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* Market */}
       <div className="sidebar__section">
         <div className="sidebar__section-title">Market</div>
-        <StatRow label="Asset"   value="BTC / USDT" />
+        <StatRow label="Asset"   value=`${symbol.replace('USDT', '')} / USDT` />
         <StatRow label="Mode"    value="Observe" />
         <StatRow label="Source"  value="Binance" />
         <StatRow

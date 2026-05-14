@@ -213,7 +213,7 @@ export default function App() {
     <div className="app-shell">
       <AlertBanner alerts={alerts} onDismiss={dismissAlert} />
       <Header ticker={ticker} isConnected={isConnected} lastUpdate={lastUpdate} livePrice={livePrice} currentSymbol={symbol} onSymbolChange={handleSymbol} />
-      <Sidebar ticker={ticker} funding={funding} longShort={longShort} fearGreed={fearGreed} openInterest={openInterest} />
+      <Sidebar ticker={ticker} funding={funding} longShort={longShort} fearGreed={fearGreed} openInterest={openInterest} symbol={symbol} />
       <ChartWorkspace
         candles={candles} timeframe={timeframe} livePrice={livePrice}
         isLoading={isLoading} magnets={magnets}
