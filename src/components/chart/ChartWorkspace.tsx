@@ -41,7 +41,7 @@ export const ChartWorkspace: React.FC<ChartWorkspaceProps> = ({
         <TimeframeSelector selected={timeframe} onChange={onTimeframeChange} isLoading={isLoading} />
         {last && (
           <div className="ohlc-bar">
-            <span className="ohlc-bar__pair">BTC/USDT</span>
+            <span className="ohlc-bar__pair">{(symbol || 'BTCUSDT').replace('USDT', '')}/USDT</span>
             <div className="ohlc-bar__values">
               {([['O', last.open], ['H', last.high], ['L', last.low], ['C', displayPrice]] as [string, number][]).map(([l, v]) => (
                 <div key={l} className="ohlc-bar__item">
