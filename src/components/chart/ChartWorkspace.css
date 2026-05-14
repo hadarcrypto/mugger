@@ -1,0 +1,140 @@
+.chart-workspace {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+  overflow: hidden;
+  min-width: 0;
+}
+
+.chart-workspace__top {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* OHLC bar */
+.ohlc-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 14px;
+  height: 32px;
+  border-bottom: 1px solid var(--border-dim);
+  background: var(--bg-secondary);
+  flex: 1;
+  border-left: 1px solid var(--border-dim);
+  overflow: hidden;
+}
+
+.ohlc-bar__pair {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+
+.ohlc-bar__values {
+  display: flex;
+  gap: 14px;
+}
+
+.ohlc-bar__item {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.ohlc-bar__label {
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.ohlc-bar__value {
+  font-size: 10px;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+
+/* Chart area */
+.chart-workspace__chart {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+/* Bottom bar */
+.chart-workspace__bottom {
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-dim);
+  flex-shrink: 0;
+}
+
+.chart-workspace__bottom-label {
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chart-workspace__bottom-count {
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+/* Mugger Score */
+.mugger-score {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.mugger-score__label {
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.mugger-score__bar {
+  width: 60px;
+  height: 4px;
+  background: var(--bg-raised);
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+
+.mugger-score__fill {
+  height: 100%;
+  background: var(--text-secondary);
+  border-radius: 2px;
+  transition: width 0.6s ease;
+}
+
+.mugger-score__value {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  min-width: 28px;
+  font-variant-numeric: tabular-nums;
+}
+
+.mugger-score__value--hot {
+  color: var(--text-white);
+}

@@ -1,0 +1,409 @@
+/* ─── MUGGER v0.001 — Global Styles ──────────────────────────────────────────── */
+
+:root {
+  /* Palette — Grayscale only */
+  --void:        #010101;
+  --bg-primary:  #080808;
+  --bg-secondary:#0e0e0e;
+  --bg-card:     #121212;
+  --bg-raised:   #181818;
+  --bg-hover:    #1e1e1e;
+
+  --border-dim:    #161616;
+  --border-subtle: #202020;
+  --border-mid:    #2a2a2a;
+  --border-bright: #363636;
+
+  --text-ghost:    #1c1c1c;
+  --text-muted:    #303030;
+  --text-dim:      #484848;
+  --text-secondary:#686868;
+  --text-mid:      #888888;
+  --text-primary:  #b8b8b8;
+  --text-bright:   #d8d8d8;
+  --text-white:    #efefef;
+
+  --up:   #c8c8c8;
+  --down: #585858;
+
+  --font-mono: 'IBM Plex Mono', 'Fira Code', 'Cascadia Code', monospace;
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+
+  --radius-sm: 1px;
+  --radius-md: 2px;
+
+  --transition-fast: 80ms ease;
+  --transition-mid:  150ms ease;
+}
+
+/* ─── Reset ─────────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--void);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: default;
+  user-select: none;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+
+/* ─── Layout Shell ───────────────────────────────────────────────────────────── */
+.app-shell {
+  display: grid;
+  grid-template-rows: 38px 1fr 24px;
+  grid-template-columns: 220px 1fr 200px;
+  grid-template-areas:
+    "header  header  header"
+    "sidebar main    signals"
+    "footer  footer  footer";
+  height: 100vh;
+  width: 100vw;
+  background: var(--bg-primary);
+  gap: 0;
+}
+
+/* ─── Typography ─────────────────────────────────────────────────────────────── */
+.label {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 400;
+}
+
+.value {
+  font-size: 11px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.value--bright {
+  color: var(--text-white);
+  font-weight: 600;
+}
+
+.value--muted {
+  color: var(--text-secondary);
+}
+
+/* ─── Panel Base ─────────────────────────────────────────────────────────────── */
+.panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+}
+
+/* ─── Separator ──────────────────────────────────────────────────────────────── */
+.sep-h {
+  width: 100%;
+  height: 1px;
+  background: var(--border-dim);
+  margin: 0;
+}
+
+.sep-v {
+  height: 100%;
+  width: 1px;
+  background: var(--border-dim);
+}
+
+/* ─── State Dot ──────────────────────────────────────────────────────────────── */
+.state-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.state-dot--active   { background: var(--text-primary); animation: pulse 2s infinite; }
+.state-dot--watching { background: var(--text-secondary); }
+.state-dot--inactive { background: var(--text-muted); }
+.state-dot--alert    { background: var(--text-white); animation: pulse 0.8s infinite; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.2s ease forwards;
+}
+
+/* ─── Number colors ──────────────────────────────────────────────────────────── */
+.pos { color: var(--up); }
+.neg { color: var(--down); }
+
+/* ─── MOBILE RESPONSIVE ──────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  html, body, #root {
+    overflow: auto;
+    height: auto;
+    min-height: 100%;
+  }
+
+  .app-shell {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* Header — compact on mobile */
+  .header {
+    height: 48px;
+    padding: 0 10px;
+    gap: 8px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .header__sep { display: none; }
+
+  .header__stats { display: none; }
+
+  .header__price {
+    font-size: 18px;
+  }
+
+  .header__name {
+    font-size: 10px;
+  }
+
+  /* Sidebar — hidden on mobile, shown as bottom drawer */
+  .app-shell > aside {
+    display: none;
+  }
+
+  /* Signals panel — hidden on mobile */
+  .app-shell > div[class*="signals"] {
+    display: none;
+  }
+
+  /* Main chart area — full width */
+  .chart-workspace {
+    width: 100vw;
+    height: calc(100vh - 48px - 56px);
+    min-height: 400px;
+    grid-area: unset;
+  }
+
+  /* Timeframe selector — scrollable on mobile */
+  .tf-selector {
+    padding: 0 8px;
+    gap: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tf-selector__label { display: none; }
+
+  .tf-btn {
+    padding: 4px 10px;
+    font-size: 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* OHLC bar — simplified */
+  .ohlc-bar {
+    padding: 0 8px;
+    gap: 8px;
+    overflow-x: auto;
+  }
+
+  .ohlc-bar__pair { display: none; }
+
+  .ohlc-bar__value { font-size: 9px; }
+
+  /* Magnets panel — compact */
+  .magnets-panel {
+    padding: 6px 8px;
+  }
+
+  .magnets-panel__grid {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .magnets-current {
+    flex-direction: row;
+    padding: 0;
+    gap: 8px;
+  }
+
+  .magnets-current__line {
+    width: 20px;
+    height: 1px;
+  }
+
+  /* Footer — hidden on mobile */
+  footer {
+    display: none;
+  }
+
+  /* Asset selector dropdown — full width on mobile */
+  .asset-selector__dropdown {
+    left: 4px !important;
+    right: 4px;
+    width: auto !important;
+    top: 52px !important;
+  }
+
+  /* Setup card — bottom of screen on mobile */
+  .setup-card {
+    left: 4px;
+    right: 4px;
+    width: auto;
+    bottom: 60px;
+  }
+
+  /* Alert banner — full width */
+  .alert-banner {
+    left: 4px;
+    right: 4px;
+    max-width: 100%;
+  }
+
+  /* Pull indicator — smaller */
+  .pull-indicator {
+    font-size: 7px;
+    padding: 2px 6px;
+    top: 4px;
+  }
+
+  /* Chart dividers — smaller */
+  .chart-divider {
+    height: 16px;
+  }
+
+  .chart-divider__label {
+    font-size: 7px;
+  }
+}
+
+/* ─── MOBILE BOTTOM NAV ──────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background: #0a0a0a;
+    border-top: 1px solid #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 800;
+    padding: 0 4px;
+  }
+
+  .mobile-nav__btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: background 100ms;
+    min-width: 60px;
+  }
+
+  .mobile-nav__btn:active { background: #1a1a1a; }
+
+  .mobile-nav__icon {
+    font-size: 16px;
+    color: #505050;
+  }
+
+  .mobile-nav__label {
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #404040;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .mobile-nav__btn--active .mobile-nav__icon,
+  .mobile-nav__btn--active .mobile-nav__label {
+    color: #b8b8b8;
+  }
+}
+
+/* ─── MOBILE PANELS (shown as overlays) ─────────────────────────────────── */
+@media (max-width: 768px) {
+  .mobile-panel {
+    position: fixed;
+    inset: 48px 0 56px;
+    background: #080808;
+    z-index: 700;
+    overflow-y: auto;
+    animation: slideUp 0.2s ease;
+    display: none;
+  }
+
+  .mobile-panel--visible {
+    display: block;
+  }
+
+  /* Make sidebar fill mobile panel */
+  .mobile-panel .sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: none;
+    width: 100%;
+  }
+
+  /* Make signals panel fill mobile panel */
+  .mobile-panel .signals-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: none;
+    width: 100%;
+  }
+}
+
+/* ─── TABLET (768-1024px) ────────────────────────────────────────────────── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .app-shell {
+    grid-template-columns: 180px 1fr 160px;
+  }
+
+  .header__stats .header__stat:nth-child(3) {
+    display: none;
+  }
+}

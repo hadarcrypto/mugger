@@ -1,0 +1,126 @@
+.signals-panel {
+  grid-area: signals;
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border-dim);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.signals-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+}
+
+.signals-panel__title {
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.signals-panel__count {
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.signals-panel__count--active {
+  color: var(--text-primary);
+}
+
+/* Conditions */
+.signals-panel__conditions {
+  padding: 8px 0;
+}
+
+.cond-card {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-dim);
+  transition: background var(--transition-fast);
+}
+
+.cond-card:last-child {
+  border-bottom: none;
+}
+
+.cond-card:hover {
+  background: var(--bg-hover);
+}
+
+.cond-card__header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.cond-card__label {
+  font-size: 9px;
+  color: var(--text-secondary);
+  flex: 1;
+  letter-spacing: 0.04em;
+}
+
+.cond-card__value {
+  font-size: 9px;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.cond-card__state {
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding-left: 11px;
+}
+
+/* State-specific colors */
+.cond-card--inactive .cond-card__state { color: var(--text-muted); }
+.cond-card--watching .cond-card__state { color: var(--text-secondary); }
+.cond-card--active   .cond-card__state { color: var(--text-primary); }
+.cond-card--alert    .cond-card__state { color: var(--text-white); }
+
+.cond-card--active   { background: var(--bg-raised); }
+.cond-card--alert    { background: var(--bg-hover); border-left: 1px solid var(--text-secondary); }
+
+/* Future items */
+.signals-panel__future {
+  padding: 10px 12px;
+  flex: 1;
+}
+
+.signals-panel__future-title {
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.signals-panel__future-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+  font-size: 9px;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-dim);
+  letter-spacing: 0.04em;
+}
+
+.signals-panel__future-item:last-child {
+  border-bottom: none;
+}
+
+/* Note */
+.signals-panel__note {
+  padding: 10px 12px;
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  border-top: 1px solid var(--border-dim);
+  margin-top: auto;
+}

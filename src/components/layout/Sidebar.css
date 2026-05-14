@@ -1,0 +1,88 @@
+.sidebar {
+  grid-area: sidebar;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-dim);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar__section {
+  padding: 12px 14px;
+}
+
+.sidebar__section--bottom {
+  margin-top: auto;
+  border-top: 1px solid var(--border-dim);
+}
+
+.sidebar__section-title {
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.stat-row:last-child {
+  border-bottom: none;
+}
+
+.stat-row__label {
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+}
+
+.stat-row__value {
+  font-size: 10px;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.stat-row__value--dim {
+  color: var(--text-dim);
+}
+
+/* Fear/Greed bar */
+.fg-bar {
+  margin-top: 6px;
+  position: relative;
+}
+
+.fg-bar__fill {
+  height: 3px;
+  background: var(--text-secondary);
+  border-radius: 1px;
+  transition: width 0.5s ease;
+}
+
+.fg-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  height: 3px;
+  background: var(--bg-raised);
+  border-radius: 1px;
+  z-index: -1;
+}
+
+.fg-bar__labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3px;
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}

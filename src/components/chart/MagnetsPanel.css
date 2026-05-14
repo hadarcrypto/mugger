@@ -1,0 +1,127 @@
+.magnets-panel {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-dim);
+  padding: 8px 14px;
+  flex-shrink: 0;
+}
+
+.magnets-panel__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.magnets-panel__title {
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.magnets-panel__subtitle {
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+.magnets-panel__grid {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.magnets-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.magnets-col__label {
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.magnets-current {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 14px;
+  gap: 3px;
+}
+
+.magnets-current__line {
+  width: 1px;
+  height: 20px;
+  background: var(--border-mid);
+}
+
+.magnets-current__price {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-bright);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.magnet-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 6px;
+  border: 1px solid var(--border-dim);
+  background: var(--bg-card);
+}
+
+.magnet-item--extreme { border-color: #363636; }
+.magnet-item--strong  { border-color: #242424; }
+.magnet-item--medium  { border-color: #1c1c1c; }
+.magnet-item--weak    { border-color: #161616; opacity: 0.7; }
+
+.magnet-item__dots {
+  display: flex;
+  gap: 2px;
+}
+
+.magnet-item__dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+}
+
+.magnet-item--extreme .magnet-item__dot { background: var(--text-bright); }
+.magnet-item--strong  .magnet-item__dot { background: var(--text-primary); }
+.magnet-item--medium  .magnet-item__dot { background: var(--text-secondary); }
+.magnet-item--weak    .magnet-item__dot { background: var(--text-dim); }
+
+.magnet-item__price {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  min-width: 72px;
+}
+
+.magnet-item__dist {
+  font-size: 9px;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+  min-width: 44px;
+}
+
+.magnet-item__liq {
+  font-size: 9px;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.magnets-empty {
+  font-size: 9px;
+  color: var(--text-muted);
+  padding: 3px 6px;
+}

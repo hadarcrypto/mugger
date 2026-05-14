@@ -1,0 +1,155 @@
+.setup-card {
+  position: fixed;
+  bottom: 32px;
+  left: 228px;
+  width: 280px;
+  background: #0c0c0c;
+  border: 1px solid #2a2a2a;
+  z-index: 500;
+  animation: slideUp 0.2s ease;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.setup-card__header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  background: #0e0e0e;
+  border-bottom: 1px solid #1e1e1e;
+}
+
+.setup-card__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #c8c8c8;
+  animation: blink 1.5s infinite;
+  flex-shrink: 0;
+}
+
+.setup-card__title {
+  font-size: 10px;
+  font-weight: 600;
+  color: #d8d8d8;
+  letter-spacing: 0.1em;
+  flex: 1;
+}
+
+.setup-card__edge {
+  font-size: 9px;
+  color: #888;
+  letter-spacing: 0.08em;
+}
+
+.setup-card__lev {
+  font-size: 8px;
+  color: #555;
+  padding: 1px 5px;
+  border: 1px solid #2a2a2a;
+  letter-spacing: 0.06em;
+}
+
+.setup-card__close {
+  background: none;
+  border: none;
+  color: #404040;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 2px;
+}
+.setup-card__close:hover { color: #888; }
+
+.setup-card__levels {
+  padding: 6px 0;
+}
+
+.setup-card__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-bottom: 1px solid #111;
+}
+
+.setup-card__row:last-child { border-bottom: none; }
+
+.setup-card__row-label {
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  min-width: 36px;
+}
+
+.setup-card__row--entry .setup-card__row-label { color: #888; }
+.setup-card__row--stop  .setup-card__row-label { color: #884040; }
+.setup-card__row--tp    .setup-card__row-label { color: #408050; }
+
+.setup-card__row-price {
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  flex: 1;
+}
+
+.setup-card__row--entry .setup-card__row-price { color: #d8d8d8; }
+.setup-card__row--stop  .setup-card__row-price { color: #cc6666; }
+.setup-card__row--tp    .setup-card__row-price { color: #60a878; }
+
+.setup-card__row-rr {
+  font-size: 9px;
+  color: #606060;
+  min-width: 32px;
+  text-align: right;
+}
+
+.setup-card__row-sub {
+  font-size: 8px;
+  color: #404040;
+  min-width: 28px;
+  text-align: right;
+}
+
+.setup-card__trigger {
+  padding: 6px 12px;
+  font-size: 8px;
+  color: #383838;
+  border-top: 1px solid #111;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
+
+.setup-card__status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-top: 1px solid #111;
+  background: #0a0a0a;
+}
+
+.setup-card__status-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.setup-card__status-dot--active     { background: #888; animation: blink 2s infinite; }
+.setup-card__status-dot--tp1_hit    { background: #60a060; }
+.setup-card__status-dot--tp2_hit    { background: #40c060; }
+.setup-card__status-dot--tp3_hit    { background: #20e060; }
+.setup-card__status-dot--stopped    { background: #884040; }
+.setup-card__status-dot--invalidated { background: #444; }
+
+.setup-card__status-label {
+  font-size: 8px;
+  color: #505050;
+  letter-spacing: 0.08em;
+}

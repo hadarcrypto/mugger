@@ -1,0 +1,84 @@
+.candle-chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #080808;
+}
+
+.chart-divider {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  background: #090909;
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #111;
+  flex-shrink: 0;
+}
+
+.chart-divider__label {
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #252525;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.candle-chart-loading {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #383838;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* ── Pull indicator — shows dominant magnet direction ── */
+.pull-indicator {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  z-index: 20;
+  pointer-events: none;
+  border: 1px solid #1e1e1e;
+  background: rgba(8,8,8,0.85);
+}
+
+.pull-indicator--upper {
+  border-color: #3a1818;
+}
+
+.pull-indicator--lower {
+  border-color: #183a22;
+}
+
+.pull-indicator__arrow {
+  font-size: 10px;
+}
+
+.pull-indicator--upper .pull-indicator__arrow { color: #b04040; }
+.pull-indicator--lower .pull-indicator__arrow { color: #40a060; }
+
+.pull-indicator__label {
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.pull-indicator--upper .pull-indicator__label { color: #884040; }
+.pull-indicator--lower .pull-indicator__label { color: #408050; }

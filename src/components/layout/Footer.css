@@ -1,0 +1,19 @@
+.footer {
+  grid-area: footer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-dim);
+  height: 24px;
+  overflow: hidden;
+}
+
+.footer__left,
+.footer__right {
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
